@@ -1,0 +1,28 @@
+﻿<!DOCTYPE html>
+<html lang="en">
+<head>
+  <% include ../partials/head %>
+
+
+</head>
+<body>
+  <% include ../partials/header %>
+
+  <div class="container container-body">
+    <div class="input-group input-group-lg">
+      <input type="text" class="form-control" placeholder="Search Name" id="searchTerm" aria-label="Search Name" aria-describedby="button-addon2">
+          <select id="searchType">
+              <option value="id">ID</option>
+              <option value="name">Name</option>
+            </select>
+    </div>
+
+    <div id="unitList">
+      <% include ../partials/unitListFactory %>
+    </div>
+  </div>
+  
+  <% include ../partials/footer %>
+  <script src="../../Static/Script/unitList.js" ></script>
+</body>
+</html>
