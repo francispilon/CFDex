@@ -3,7 +3,8 @@ var express = require('express');
 var ejs = require('ejs');
 var cfdex = express();
 cfdex.set('view engine', 'ejs');
-cfdex.use('/Static', express.static('public'))
+cfdex.use('/Static', express.static('Public'))
+cfdex.use(express.static('Views'));
 var fs = require("fs");
 
 //files
@@ -20,7 +21,7 @@ cfdex.get('/unit', function(req, res){
 
 cfdex.get('/unit/:id', function(req, res){
     var unitResult = getUnitByID(req.params.id);
-
+	console.log(unitResult[0]);
     if(unitResult.length == 0)//404
         res.render('html/unitList', {units: units});
     else
@@ -46,24 +47,26 @@ cfdex.get('/api/unit', function(req, res){
     res.send(units);
 });
 
-cfdex.get('/api/unit/:id', function(req, res){
-    var unitResult = getUnitByID(req.params.id);
+cfdex.get('/api/unit/:type/:id', function(req, res){
+	var unitResult = [];
+    if(req.params.type == "name")
+{
+	unitResult = getUnitByName(req.params.id);
+}
+else if(req.params.type == "id")
+{
+    unitResult = getUnitByID(req.params.id);
+}
     if(unitResult == [])//404
         res.status(404).send("Unit with ID ${req.params.ID} was not found");
+    else if(unitResult.length > 1)
+	res.send(unitResult);
     else
-        res.send(unitResult);
-});
-
-cfdex.get('api/unit/:name', function(req, res){
-    var unitResult = getUnitByName(req.params.name);
-    if(unitResult == [])//404
-        res.status(404).send("Unit with name ${req.params.name} was not found");
-    else
-        res.send(unitResult);
+        res.send(unitResult[0]);
 });
 
 //Server
-var server = cfdex.listen(80, "127.0.0.1", function(){
+var server = cfdex.listen(8080, "45.76.255.175", function(){
     var unitFile = fs.readFileSync("./Files/units.json");
     if(!unitFile)
         console.log("Unable to open unit file")
@@ -91,12 +94,11 @@ function getUnitByID(id){
 
 function getUnitByName(name){
     var unitResult = [];
-
+	
     for (var i = 0; i < units.length; i++){
         if (units[i].name.toLowerCase().includes(name.toLowerCase())){
             unitResult.push(units[i]);
         }
     }
-
     return unitResult;
 }
