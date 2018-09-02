@@ -176,14 +176,14 @@
             <div class="card">
               <h5 class="card-header blueUnit">Ability 4:
                 <%= unit.abilityFourName %>
-              </h5>
-              <div class="text-muted">
+		<div class="text-muted">
                 Bug:
                 <% if(unit.abilityOneBugUnlock !== "") { %>
                 <%= unit.abilityFourBugUnlock %>
                 <% } else { %>1
                 <% } %>
               </div>
+              </h5>
               <div class="card-body">
                 <p class="card-text">
                   <%= unit.abilityFourDesc %>
