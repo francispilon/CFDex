@@ -6,8 +6,8 @@ cfdex.set('view engine', 'ejs');
 cfdex.use('/Static', express.static('Public'))
 cfdex.use(express.static('Views'));
 var fs = require("fs");
-var appPort = 8080;
-var appIP = "45.76.255.175";
+var appPort = 80;
+var appIP = "127.0.0.1";
 
 //files
 var units = [];

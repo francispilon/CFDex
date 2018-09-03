@@ -7,7 +7,28 @@
   <% include ../partials/header %>
 
   <div class="container">
-
+    <div id="carouselfIndicator" class="carousel slide" data-ride="carousel">
+      <ol class="carousel-indicators">
+        <li data-target="#carouselIndicator" data-slide-to="0" class="active"></li>
+      </ol>
+      <div class="carousel-inner">
+        <div class="carousel-item active">
+          <a href="https://www.discord.gg/crashfever" class="carousel-link"><img class="d-block w-100" src="../../Static/Media/Other/discord_carousel.png" alt="First slide">
+          <div class="carousel-caption d-none d-md-block black-text">
+            <h5>Join our Discord Server!</h5>
+            <p>Come on over and chat with hundreds Crash Fever players on Discord.</p>
+          </div></a>
+        </div>
+      </div>
+      <a class="carousel-control-prev" href="#carouselfIndicator" role="button" data-slide="prev">
+        <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+        <span class="sr-only">Previous</span>
+      </a>
+      <a class="carousel-control-next" href="#carouselfIndicator" role="button" data-slide="next">
+        <span class="carousel-control-next-icon" aria-hidden="true"></span>
+        <span class="sr-only">Next</span>
+      </a>
+    </div>
   </div>
   
   <% include ../partials/footer %>

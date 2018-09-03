@@ -160,7 +160,7 @@ function sendUnitReply(e, unit) {
   if (unit.abilityOneName !== "") {
     var bugAbilityUnlock = unit.abilityOneBugUnlock !== "" ? unit.abilityOneBugUnlock : 1
     fields.push({
-      "name": "Ability One: " + unit.abilityOneName + " - Bug: " + bugAbilityUnlock,
+      "name": "Ability 1: " + unit.abilityOneName + " - Bug: " + bugAbilityUnlock,
       "value": unit.abilityOneDesc
     });
   }
@@ -168,7 +168,7 @@ function sendUnitReply(e, unit) {
   if (unit.abilityTwoName !== "") {
     var bugAbilityUnlock = unit.abilityTwoBugUnlock !== "" ? unit.abilityTwoBugUnlock : 1
     fields.push({
-      "name": "Ability Two: " + unit.abilityTwoName + " - Bug: " + bugAbilityUnlock,
+      "name": "Ability 2: " + unit.abilityTwoName + " - Bug: " + bugAbilityUnlock,
       "value": unit.abilityTwoDesc
     });
   }
@@ -176,7 +176,7 @@ function sendUnitReply(e, unit) {
   if (unit.abilityThreeName !== "") {
     var bugAbilityUnlock = unit.abilityThreeBugUnlock !== "" ? unit.abilityThreeBugUnlock : 1
     fields.push({
-      "name": "Ability Three: " + unit.abilityThreeName + " - Bug: " + bugAbilityUnlock,
+      "name": "Ability 3: " + unit.abilityThreeName + " - Bug: " + bugAbilityUnlock,
       "value": unit.abilityThreeDesc
     });
   }
@@ -184,7 +184,7 @@ function sendUnitReply(e, unit) {
   if (unit.abilityFourName !== "") {
     var bugAbilityUnlock = unit.abilityFourBugUnlock !== "" ? unit.abilityFourBugUnlock : 1
     fields.push({
-      "name": "Ability Four: " + unit.abilityFourName + " - Bug: " + bugAbilityUnlock,
+      "name": "Ability 4: " + unit.abilityFourName + " - Bug: " + bugAbilityUnlock,
       "value": unit.abilityFourDesc
     });
   }
