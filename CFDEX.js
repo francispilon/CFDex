@@ -7,14 +7,14 @@ cfdex.use('/Static', express.static('Public'))
 cfdex.use(express.static('Views'));
 var fs = require("fs");
 var appPort = 80;
-var appIP = "127.0.0.1";
+var appIP = "172.0.0.1";
 var favicon = require('serve-favicon');
+var units = require('./Files/units.json');
 
 //favicon
 cfdex.use(favicon(__dirname + '/Public/Media/Other/favicon.ico'));
 
 //files
-var units = [];
 
 //webpages
 cfdex.get('/', function (req, res) {
@@ -75,15 +75,9 @@ cfdex.get('/api/unit/:type/:query', function (req, res) {
 
 //Server
 var server = cfdex.listen(appPort, appIP, function () {
-    var unitFile = fs.readFileSync("./Files/units.json");
-    if (!unitFile)
-        console.log("Unable to open unit file")
-    else
-        units = JSON.parse(unitFile);
-
     var host = server.address().address;
     var port = server.address().port;
-
+	
     console.log("app listening at ", host, port);
 })
 
