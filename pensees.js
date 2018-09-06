@@ -86,6 +86,7 @@ function requestUnit(e, url, query, searchType, callback) {
     } else if (!/^application\/json/.test(contentType)) {
       error = new Error('Invalid content-type.\n' +
         `Expected application/json but received ${contentType}`);
+      sendErrorReply(e, 404, "Could not find unit with " + searchType + " like " + query);
     }
     if (error) {
       console.error(error.message);
