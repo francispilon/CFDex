@@ -8,6 +8,10 @@ cfdex.use(express.static('Views'));
 var fs = require("fs");
 var appPort = 80;
 var appIP = "127.0.0.1";
+var favicon = require('serve-favicon');
+
+//favicon
+cfdex.use(favicon(__dirname + '/Public/Media/Other/favicon.ico'));
 
 //files
 var units = [];
@@ -23,7 +27,7 @@ cfdex.get('/unit', function (req, res) {
     });
 })
 
-cfdex.get('/unit/:id', function (req, res) {
+cfdex.get('/unit/details/:id', function (req, res) {
     var unitResult = getUnitByID(req.params.id);
     if (unitResult.length == 0) //404
         res.render('html/unitList', {
@@ -35,19 +39,21 @@ cfdex.get('/unit/:id', function (req, res) {
         });
 })
 
-cfdex.get('/unit/searchUnit/:searchCategory/:searchTerm', function (req, res) {
-    var units = [];
-    var searchCategory = req.params.searchCategory;
-    var searchTerm = req.params.searchTerm;
-
-    if (searchCategory == 'id')
-        units = getUnitByID(searchTerm);
-    else if (searchCategory == 'name')
-        units = getUnitByName(searchTerm);
+cfdex.get('/unit/searchUnit', function (req, res) {
+    var unitResult = [];
+    var searchType = req.query.searchType;
+    var searchTerm = req.query.searchTerm;
+    console.log(searchType + searchTerm)
+    if(searchType === "" || searchTerm === "" )
+        unitResult = units
+    else if (searchType == 'id')
+        unitResult = getUnitByID(searchTerm);
+    else if (searchType == 'name')
+        unitResult = getUnitByName(searchTerm);
 
     
     res.render('partials/unitListFactory', {
-        units: units
+        units: unitResult
     });
 })
 
@@ -56,12 +62,12 @@ cfdex.get('/api/unit', function (req, res) {
     res.send(units);
 });
 
-cfdex.get('/api/unit/:type/:id', function (req, res) {
+cfdex.get('/api/unit/:type/:query', function (req, res) {
     var unitResult = [];
     if (req.params.type == "name") {
-        unitResult = getUnitByName(req.params.id);
+        unitResult = getUnitByName(req.params.query);
     } else if (req.params.type == "id") {
-        unitResult = getUnitByID(req.params.id)[0];
+        unitResult = getUnitByID(req.params.query)[0];
     }
 
     res.send(unitResult);

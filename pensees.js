@@ -82,7 +82,7 @@ function requestUnit(e, url, query, searchType, callback) {
     if (statusCode !== 200) {
       error = new Error('Request Failed.\n' +
         `Status Code: ${statusCode}`);
-	sendErrorReply(e, statusCode, "Could not find unit with " + searchType + " like \'" + query + "\'");
+	    sendErrorReply(e, statusCode, "Could not find unit with " + searchType + " like \'" + query + "\'");
     } else if (!/^application\/json/.test(contentType)) {
       error = new Error('Invalid content-type.\n' +
         `Expected application/json but received ${contentType}`);

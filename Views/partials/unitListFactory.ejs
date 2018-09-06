@@ -1,29 +1,33 @@
-<% for(var i = 0; i < units.length; ++i) { %>
-<% if( i == 0 || i % 4 == 0) { %>
-<div class="row">
-  <% } %>
-  <a href=<%- "/unit/" + units[i].ID %> class="col-xs-12 col-sm-6 col-lg-3 link-unit-deco" style="margin: 1em 0;">
-    <div <%- "class=\"unit-" + units[i].color.toLowerCase() + " card\"" %> style="width: 100%; min-height: 100%;">
-      <div class="card-body">
-        <h5 class="card-title">
-          <%= units[i].name %>
-        </h5>
-        <p class="card-text">
-          <% for(var j = 0; j < units[i].rarity; ++j) { %>
-          ⭐
-          <% } %>
-        </p>
-        <h6 class="card-subtitle mb-2 text-muted">Unit ID:
-          <%= units[i].ID %>
-        </h6>
-        <p class="card-text"  >
-          <%= units[i].type %><br />
-          <%= units[i].tribe.replace(" None" , "") %>
-        </p>
+<% if(units.length < 1 ) {  %>
+<p class="alert alert-warning">No unit matches your query.</p>
+<% } else { %>
+  <% for(var i = 0; i < units.length; ++i) { %>
+    <% if( i == 0 || i % 4 == 0) { %>
+      <div class="row">
+    <% } %>
+      <a href=<%- "/unit/details/" + units[i].ID %> class="col-xs-12 col-sm-6 col-lg-3 link-unit-deco" style="margin: 1em 0;">
+        <div <%- "class=\" unit-" + units[i].color.toLowerCase() + " card\"" %> style=" width: 100%; min-height: 100%;">
+          <div class="card-body">
+            <h5 class="card-title">
+              <%= units[i].name %>
+            </h5>
+            <p class="card-text">
+              <% for(var j = 0; j < units[i].rarity; ++j) { %>
+              ⭐
+              <% } %>
+            </p>
+            <h6 class="card-subtitle mb-2 text-muted">Unit ID:
+              <%= units[i].ID %>
+            </h6>
+            <p class="card-text">
+              <%= units[i].type %><br />
+              <%= units[i].tribe.replace(" None" , "") %>
+            </p>
+          </div>
+        </div>
+      </a>
+    <% if( i % 4 == 3) { %>
       </div>
-    </div>
-  </a>
-  <% if( i % 4 == 3) { %>
-</div>
-<% } %>
+    <% } %>
+  <% } %>
 <% } %>
