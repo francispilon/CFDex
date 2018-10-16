@@ -1,5 +1,6 @@
 <meta property="og:description" 
-  content="<% for(var j = 0; j < unit.rarity; ++j) { %>&#x2B50<% } %>
+  content="<%= unit.name %>
+  <% for(var j = 0; j < unit.rarity; ++j) { %>&#x2B50<% } %>
   <%= unit.type %> / <%= unit.tribe.replace(" None" , "") %> / Cost <%= unit.cost%>" />
-<meta property="og:site_name" <%- "content= \"CFDEX - " + unit.name + "\"" %> />
+<meta property="og:site_name" content="Crash Fever Dexter" />
 <meta property="og:image" <%- "content=\"http://cfdex.xyz/Static/Media/Units/Unit" + unit.ID + ".png\"" %>
